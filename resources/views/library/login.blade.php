@@ -1,0 +1,3 @@
+@extends('library.layout')
+@section('title', 'Masuk')
+@section('content')<section class="panel"><div class="eyebrow">Selamat datang kembali</div><h1>Masuk akun siswa</h1><p class="muted">Gunakan email dan kata sandi akun perpustakaanmu.</p><form method="post" action="{{ route('login.submit') }}">@csrf<div class="field"><label>Email</label><input name="email" type="email" value="{{ old('email') }}" required autofocus></div><div class="field"><label>Kata sandi</label><input name="password" type="password" required></div><button class="btn" style="width:100%;margin-top:8px">Masuk</button></form><p class="muted">Belum punya akun? <a style="color:var(--green);font-weight:700" href="{{ route('register') }}">Daftar di sini</a></p></section>@endsection
