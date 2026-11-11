@@ -47,5 +47,5 @@ class Loan extends Model
     public function member(): BelongsTo { return $this->belongsTo(Member::class); }
     public function book(): BelongsTo { return $this->belongsTo(Book::class); }
     public function processor(): BelongsTo { return $this->belongsTo(User::class, 'processed_by'); }
-    public function getIsOverdueAttribute(): bool { return $this->status === 'dipinjam' && $this->due_date->isPast(); }
+    public function getIsOverdueAttribute(): bool { return $this->status === 'dipinjam' && $this->due_date->lt(today()); }
 }

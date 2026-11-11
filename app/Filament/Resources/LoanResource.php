@@ -54,7 +54,7 @@ class LoanResource extends Resource
                 TextColumn::make('loan_date')->label('Tanggal Pinjam')->date()->sortable(),
                 TextColumn::make('due_date')->label('Batas Kembali')->date()->sortable(),
                 TextColumn::make('status')->label('Status')->badge()->color(fn (string $state): string => $state === 'dikembalikan' ? 'success' : 'warning'),
-                TextColumn::make('due_date')->label('Keterangan')->state(fn ($record) => $record->status === 'dipinjam' && $record->due_date->isPast() ? 'Terlambat' : ($record->status === 'dikembalikan' ? 'Selesai' : 'Aktif'))->badge()->color(fn (string $state): string => $state === 'Terlambat' ? 'danger' : 'gray'),
+                TextColumn::make('due_date')->label('Keterangan')->state(fn ($record) => $record->status === 'dipinjam' && $record->due_date->lt(today()) ? 'Terlambat' : ($record->status === 'dikembalikan' ? 'Selesai' : 'Aktif'))->badge()->color(fn (string $state): string => $state === 'Terlambat' ? 'danger' : 'gray'),
             ])
             ->filters([
                 SelectFilter::make('status')->label('Status')->options(['dipinjam' => 'Dipinjam', 'dikembalikan' => 'Dikembalikan']),

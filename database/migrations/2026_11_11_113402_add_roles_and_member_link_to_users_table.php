@@ -9,7 +9,7 @@ return new class extends Migration {
     {
         Schema::table('users', function (Blueprint $table) {
             $table->string('role')->default('admin');
-            $table->foreignId('member_id')->nullable()->unique()->after('id')->constrained()->nullOnDelete();
+            $table->foreignId('member_id')->nullable()->unique()->after('id')->constrained()->restrictOnDelete();
         });
     }
 

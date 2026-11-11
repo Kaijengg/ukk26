@@ -41,7 +41,7 @@ CREATE TABLE users (
   remember_token VARCHAR(100) NULL,
   created_at TIMESTAMP NULL,
   updated_at TIMESTAMP NULL,
-  CONSTRAINT users_member_fk FOREIGN KEY (member_id) REFERENCES members(id) ON DELETE SET NULL
+  CONSTRAINT users_member_fk FOREIGN KEY (member_id) REFERENCES members(id) ON DELETE RESTRICT
 ) ENGINE=InnoDB;
 
 CREATE TABLE loans (
